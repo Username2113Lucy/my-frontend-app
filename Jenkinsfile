@@ -41,6 +41,10 @@ pipeline {
                                                     usernameVariable: 'GITHUB_USERNAME', 
                                                     passwordVariable: 'GITHUB_TOKEN')]) {
                         sh """
+                            # Remove existing directory if it exists
+                            rm -rf my-frontend-manifests
+                            
+                            # Clone fresh
                             git clone https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_USERNAME}/my-frontend-manifests.git
                             cd my-frontend-manifests
                             
